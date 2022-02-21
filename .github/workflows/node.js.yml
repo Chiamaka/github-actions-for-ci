@@ -15,6 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: npm install and build webpack
+      uses: actions/setup-node@v2
     - run: |
         npm ci
         npm run build
