@@ -39,7 +39,7 @@ jobs:
               repo: context.repo.repo,
               comment_id: context.repo.comment_id,
             });
-            console.log('comment', comment')
+            console.log('comment', comment)
 #            const commentBody = github.event.issue.body.toLowerCase();
 #            const success = commentBody.includes("update branch");
 #            return success;
