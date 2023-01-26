@@ -1,0 +1,38 @@
+name: Update branch
+
+permissions:
+  checks: write
+  id-token: write
+  pull-requests: write
+  contents: write
+  issues: write
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  update-branch:
+    name: Merge master into PR
+    runs-on: ubuntu
+    if: ${{ github.event.issue.pull_request }}
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Check for comment "update branch"
+        id: check-comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const commentBody = github.event.issue.body.toLowerCase();
+            const success = commentBody.includes("update branch");
+            return success;
+
+      - name: Merge master into PR branch
+        if: steps.check-comment.outputs.result == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git merge origin/master
+          git push
