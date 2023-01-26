@@ -47,7 +47,7 @@ jobs:
                   return true;
                 }
               }
-            }
+            return false;
 #            const commentBody = github.event.issue.body.toLowerCase();
 #            const success = commentBody.includes("update branch");
 #            return success;
