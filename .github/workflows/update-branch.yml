@@ -22,13 +22,13 @@ jobs:
 
       - name: Checkout source code
         uses: actions/checkout@v3
-        run: echo ${{ github.event.issue.pull_request }}
 
       - name: Check for comment "update branch"
         id: check-comment
         uses: actions/github-script@v6
         with:
           script: |
+            console.log('github.event.issue.pull_request', github.event.issue.pull_request)
             const commentBody = github.event.issue.body.toLowerCase();
             const success = commentBody.includes("update branch");
             return success;
