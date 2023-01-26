@@ -28,10 +28,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log('github.event.issue.pull_request', github.event.issue)
-            const commentBody = github.event.issue.body.toLowerCase();
-            const success = commentBody.includes("update branch");
-            return success;
+            console.log('logs>>>>', github.rest)
+#            const commentBody = github.event.issue.body.toLowerCase();
+#            const success = commentBody.includes("update branch");
+#            return success;
 
       - name: Merge master into PR branch
         if: steps.check-comment.outputs.result == 'true'
