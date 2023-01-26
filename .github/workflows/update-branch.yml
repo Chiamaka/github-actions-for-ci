@@ -31,10 +31,15 @@ jobs:
       - name: Check for comment "update branch"
         if: github.event_name == 'pull_request'
         id: check-comment
-#        uses: actions/github-script@v6
-#        with:
-        run: |
-          console.log('logs>>>>', context.payload.comment, github.event)
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const comment = octokit.rest.issues.getComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.repo.comment_id,
+            });
+            console.log('comment', comment')
 #            const commentBody = github.event.issue.body.toLowerCase();
 #            const success = commentBody.includes("update branch");
 #            return success;
