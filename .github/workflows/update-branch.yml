@@ -24,6 +24,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Check for comment "update branch"
+        if: github.event_name == 'issue_comment'
         id: check-comment
         uses: actions/github-script@v6
         with:
