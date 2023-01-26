@@ -34,12 +34,14 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log('comment', context.repo, context.issue, context)
-#            const comment = github.rest.issues.getComment({
-#              owner: context.repo.owner,
-#              repo: context.repo.repo,
-#              comment_id: context.repo.comment_id,
-#            });
+            console.log('>>>', context.repo, context.issue)
+            const comments = github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.repo.comment_id,
+            });
+            
+            console.log('comments', comments)
 
 #            const commentBody = github.event.issue.body.toLowerCase();
 #            const success = commentBody.includes("update branch");
