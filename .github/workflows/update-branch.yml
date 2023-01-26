@@ -38,7 +38,7 @@ jobs:
             const comments = github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              comment_id: context.repo.comment_id,
+              issue_number: context.repo.number,
             });
             
             console.log('comments', comments)
