@@ -28,7 +28,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log('logs>>>>', context.payload.comment.body, github.event)
+            console.log('logs>>>>', context.payload.comment, github.event)
 #            const commentBody = github.event.issue.body.toLowerCase();
 #            const success = commentBody.includes("update branch");
 #            return success;
