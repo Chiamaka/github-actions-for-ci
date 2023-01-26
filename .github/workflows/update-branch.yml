@@ -59,5 +59,5 @@ jobs:
         run: |
           git config pull.rebase false
           git pull origin main
-          git merge origin/main
+          git merge --allow-unrelated-histories
           git push
